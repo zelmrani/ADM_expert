@@ -1,0 +1,71 @@
+<p>
+  <!-- -->
+  <a class="btn btn-primary" href="/#/create/expert"><span class="glyphicon glyphicon-plus"></span> Add an Expert</a>
+  <!-- -->
+  <a class="btn btn-primary" href="/#/find/expert"><span class="glyphicon glyphicon-search"></span>Find</a>
+  <br/>
+</p>
+
+<section ng-app="clientApp" ng-controller="ExpertsCtrl">
+  <span class="label">Ordered By:{{orderByField}}, Reverse Sort:{{reverseSort}}
+    </span>
+  <br>
+  <br>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>
+          <a href="#/experts" ng-click="orderByField='Name'; reverseSort = !reverseSort">
+                  Name <span ng-show="orderByField == 'Name'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+              </a>
+        </th>
+        <th>
+          <a href="#/experts" ng-click="orderByField='Surname'; reverseSort = !reverseSort">
+                  Surname <span ng-show="orderByField == 'Surname'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+              </a>
+        </th>
+        <th>
+          <a href="#/experts" ng-click="orderByField='Email'; reverseSort = !reverseSort">
+                  Email <span ng-show="orderByField == 'Email'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+              </a>
+        </th>
+        <th>
+          <a href="#/experts" ng-click="orderByField='Phone'; reverseSort = !reverseSort">
+                  Phone <span ng-show="orderByField == 'Phone'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+              </a>
+        </th>
+        <th>
+          <a href="#/experts" ng-click="orderByField='SGM'; reverseSort = !reverseSort">
+                  SGM <span ng-show="orderByField == 'SGM'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+              </a>
+        </th>
+        <th>
+          <a href="#/experts" ng-click="orderByField='Skills'; reverseSort = !reverseSort">
+                  Skills <span ng-show="orderByField == 'Skills'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+              </a>
+        </th>
+
+        <th>Operations</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="expert in experts|orderBy:orderByField:reverseSort">
+        <td>{{expert.Name}}</td>
+        <td>{{expert.Surname}}</td>
+        <td>{{expert.Email}}</td>
+        <td>{{expert.Phone}}</td>
+        <td>{{expert.SGM}}</td>
+        <td>{{expert.Skills}}</td>
+          <!-- Partie rajoutée pour les opérations de modification et de suppression -->
+        <td>
+          <div class="button-group">
+            <a ng-href="/#/expert/{{ expert._id }}/edit" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></a>
+            <a ng-href="/#/expert/{{ expert._id }}/delete" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle"></span></a>
+          </div>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+</section>

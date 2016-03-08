@@ -1,0 +1,15 @@
+var restful = require('node-restful');
+
+module.exports = function(app,route){
+    // Setup the controller for REST
+    var rest=restful.model('user',
+                           app.models.user
+                          ).methods('get');
+    //Register this endpoint with the application
+    rest.register(app,route);
+    //return Middleware
+    return function(req,res,next){
+    next();
+    };
+};
+
